@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable name="item" type="androidx.lifecycle.LiveData&lt;com.justincamp.demo.models.ArtistProfile>"/>
+        <variable name="currentPage" type="androidx.lifecycle.LiveData&lt;Integer>" />
+        <variable name="totalPages" type="androidx.lifecycle.LiveData&lt;Integer>" />
+
+    </data>
+
+    <ScrollView
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/mainImage"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/mainImage"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_toRightOf="@id/mainImage"
+                android:gravity="center"
+                android:textSize="22sp"
+                android:text="@{item.name}"
+                tools:text="Artist Name" />
+
+            <TextView
+                android:id="@+id/bio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/title"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_toRightOf="@id/mainImage"
+                android:minLines="4"
+                android:text="@{item.profile}"
+                tools:text="Artist Bio" />
+
+            <TextView
+                android:id="@+id/membersHeader"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@id/bio"
+                android:layout_marginTop="18dp"
+                android:background="@color/colorPrimaryDark"
+                android:gravity="center_vertical"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="@string/members"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/membersList"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_below="@id/membersHeader" />
+
+            <TextView
+                android:id="@+id/releasesHeader"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@id/membersList"
+                android:layout_marginTop="18dp"
+                android:background="@color/colorPrimaryDark"
+                android:gravity="center_vertical"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="@string/releases"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+            <ProgressBar
+                android:id="@+id/releasesProgress"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/releasesHeader"
+                android:layout_alignBottom="@id/releasesHeader"
+                android:layout_toLeftOf="@id/pageLeft" />
+
+            <TextView
+                android:id="@+id/pageLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/releasesHeader"
+                android:layout_alignBottom="@id/releasesHeader"
+                android:layout_marginEnd="8dp"
+                android:layout_toLeftOf="@id/page"
+                android:gravity="center_vertical"
+                android:text="{faw-chevron-left}"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:text="&lt;" />
+
+            <TextView
+                android:id="@+id/page"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/releasesHeader"
+                android:layout_alignBottom="@id/releasesHeader"
+                android:layout_marginEnd="8dp"
+                android:layout_toLeftOf="@id/pageRight"
+                android:gravity="center_vertical"
+                android:textColor="@android:color/white"
+                android:text="@{@string/page(currentPage, totalPages)}"
+                tools:text="1 of 36" />
+
+            <TextView
+                android:id="@+id/pageRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/releasesHeader"
+                android:layout_alignEnd="@id/releasesHeader"
+                android:layout_alignBottom="@id/releasesHeader"
+                android:layout_marginEnd="8dp"
+                android:gravity="center_vertical"
+                android:text="{faw-chevron-right}"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:text=">" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/releasesList"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_below="@id/releasesHeader"
+                android:layout_alignParentBottom="true" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</layout>

@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">HomeSpotterDemo</string>
+    <string name="artist_search">Artist Search</string>
+    <string name="initial_search">Search for an artist</string>
+    <string name="no_matches">No artists match your search.</string>
+    <string name="loading">Loading …</string>
+    <string name="search_error">An error occurred while searching artists: %1$s</string>
+    <string name="members">Members</string>
+    <string name="releases">Releases</string>
+    <string name="page">%1$s of %2$s</string>
+    <string name="is_active">Is Active? %1$s</string>
+    <string name="release_year">Released in %1$s</string>
+    <string name="artist_details">Artist Details</string>
+    <string name="initial_warning">The Discogs api uses rate limiting. The limit is 60 requests per
+    minute, and this includes image requests. If you encounter errors in retrieving data, this is
+    most likely the culprit. Simply wait a good 60 seconds or so, and try again.</string>
+    <string name="gotcha">Ok, I got it.</string>
+</resources>
